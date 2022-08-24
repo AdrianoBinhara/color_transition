@@ -4,22 +4,23 @@ Color Interpolate is a Flutter package for transitioning between PageView pages 
 
 ## Installation
 
-Add the package to your pubspack.yaml file as shown bellow
+Add the package to your pubspec.yaml file as shown bellow
 
 ```bash
 dependencies:
   flutter:
     sdk: flutter
-  color_interpolate: 0.0.1
+  color_interpolate: 0.0.6
 ```
 
 
 ## Usage
-You need to provide the ColorTransition widget a list of widgets, and the respective colors you want to interpolate
+You need to provide the ColorInterpolate widget a list of widgets, the respective colors you want to interpolate, and a PageController so that you can manipulate the PageView.
 ```dart
-import color_transition;
+import color_interpolate;
 
 ColorInterpolate(
+      controller: _controller,
       listOfWidgets: [
         Center(child: Text('1')),
         Center(child: Text('2')),

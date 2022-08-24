@@ -1,20 +1,20 @@
 library color_transition;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ColorInterpolate extends StatefulWidget {
-  const ColorInterpolate({Key? key, required this.listOfWidgets, required this.Colors})
+  final PageController controller;
+  const ColorInterpolate(
+      {Key? key, required this.listOfWidgets, required this.colors, required this.controller})
       : super(key: key);
   final List<Widget> listOfWidgets;
-  final List<int> Colors;
+  final List<int> colors;
+
   @override
   State<ColorInterpolate> createState() => _ColorInterpolateState();
 }
 
 class _ColorInterpolateState extends State<ColorInterpolate> {
-  PageController _controller = PageController();
   late Animatable<Color?> background;
   int numberOfpages = 0;
 
@@ -22,6 +22,7 @@ class _ColorInterpolateState extends State<ColorInterpolate> {
   void initState() {
     _initialize();
     super.initState();
+    widget.controller;
   }
 
   TweenSequence<Color?> tweenSequence(List<int> colors) {
@@ -45,23 +46,15 @@ class _ColorInterpolateState extends State<ColorInterpolate> {
   }
 
   void _initialize() {
-    background = ListOfTween(widget.Colors);
-    _controller = PageController();
-  }
-
-  @override
-  void reassemble() {
-    _controller.dispose();
-    _initialize();
-    super.reassemble();
+    background = ListOfTween(widget.colors);
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
+      animation: widget.controller,
       builder: (context, child) {
-        final color = _controller.hasClients ? _controller.page! / numberOfpages : .0;
+        final color = widget.controller.hasClients ? widget.controller.page! / numberOfpages : .0;
 
         return DecoratedBox(
           decoration: BoxDecoration(
@@ -74,7 +67,7 @@ class _ColorInterpolateState extends State<ColorInterpolate> {
         child: Stack(
           children: [
             PageView(
-              controller: _controller,
+              controller: widget.controller,
               children: widget.listOfWidgets,
             ),
           ],

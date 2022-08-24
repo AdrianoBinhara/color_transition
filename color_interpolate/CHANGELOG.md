@@ -1,3 +1,3 @@
-## 0.0.1
+## color_interpolate 0.0.6
 
-* TODO: Describe initial release.
+Changes to readme file
