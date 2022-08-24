@@ -1,7 +1,6 @@
-name: color_transition
+name: color_interpolate
 description: A new Flutter package with color trasition background 
-version: 0.0.1
-author: Binhara
+version: 0.0.2
 homepage: https://github.com/AdrianoBinhara/color_transition
 
 environment:
