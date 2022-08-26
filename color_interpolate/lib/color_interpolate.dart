@@ -41,12 +41,12 @@ class _ColorInterpolateState extends State<ColorInterpolate> {
     return TweenSequence(list);
   }
 
-  TweenSequence<Color?> ListOfTween(List<int> colors) {
+  TweenSequence<Color?> _listOfTween(List<int> colors) {
     return tweenSequence(colors);
   }
 
   void _initialize() {
-    background = ListOfTween(widget.colors);
+    background = _listOfTween(widget.colors);
   }
 
   @override

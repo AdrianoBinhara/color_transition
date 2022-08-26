@@ -29,7 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  PageController _controller = new PageController();
+  final PageController _controller = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,21 +37,21 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           ColorInterpolate(
             controller: _controller,
-            listOfWidgets: [
+            listOfWidgets: const [
               Center(child: Text('1')),
               Center(child: Text('2')),
               Center(child: Text('3')),
               Center(child: Text('4')),
               Center(child: Text('5')),
             ],
-            colors: [0xFFFEB5E9, 0xFFCEE59B, 0xFFFAED7B, 0XFF9BE1E5, 0xFFE59B9B],
+            colors: const [0xFFFEB5E9, 0xFFCEE59B, 0xFFFAED7B, 0XFF9BE1E5, 0xFFE59B9B],
           ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: SmoothPageIndicator(
                   controller: _controller,
-                  effect: ScrollingDotsEffect(
+                  effect: const ScrollingDotsEffect(
                       dotHeight: 8,
                       dotWidth: 8,
                       dotColor: Color(0x66000000),
